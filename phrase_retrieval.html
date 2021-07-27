@@ -79,13 +79,13 @@
                 <hr>
                 <div>
                     <p class="main">
-                    The story begins in November 2018, when I started my first internship at Naver CLOVA and got an opportunity to participate in a research project led by Minjoon Seo (who is now an assistant professor at KAIST).
-                    In EMNLP 2018, Minjoon and his colleagues at Google AI Language and University of Washington presented the concept of "Phrase-indexed Question Answering" <a href='https://arxiv.org/abs/1804.07726'>(Seo et al., EMNLP'2018)</a>, which states that the current extractive question answering can be reformulated as retrieving pre-indexed phrases and brings a significant scalabilty advantage (I'll explain it in detail soon so don't worry about it if you don't understand what it means.
-                    Ever since I started working on this project, I noticed that I've spent most of my time (almost for three years) developing a better phrase retrieval model. In this post, I'm going to introduce what phrase retrieval is, why this technique is so unique, and what kinds of progress have been made recently hoping that people can understand why I spent most of my time on this project.
+                    The story begins in November 2018, when I started my first internship at Naver CLOVA and got an opportunity to participate in a research project led by <a href='https://seominjoon.github.io/'>Minjoon Seo</a> (who is now an assistant professor at KAIST).
+                    In EMNLP 2018, Minjoon and his colleagues at Google AI Language and University of Washington presented the concept of "Phrase-indexed Question Answering" <a href='https://arxiv.org/abs/1804.07726'>(Seo et al., EMNLP'18)</a>, which states that the current extractive question answering can be reformulated as retrieving pre-indexed phrases and can bring a significant scalabilty advantage (I'll explain it in detail so don't worry).
+                    Ever since I started working on this project, I noticed that I've spent most of my time (almost for three years) developing a better phrase retrieval model (ACL'19, ACL'20, ACL'21, and more), but didn't have a proper chance to introduce this line of research. In this post, I'm going to introduce what phrase retrieval is, why this technique is so unique, and what kinds of progress have been made recently, hoping that people can understand why I'm so fascinated by this research.
                     </p>
                     <h3 class="subtitle">What is Phrase Retrieval?</h3>
                     <p class="main">
-                    Phrase retrieval <a href='https://arxiv.org/abs/1906.05807'>(Seo et al., ACL'2019)</a> was originally proposed for a real-time open-domain question answering model.
+                    Phrase retrieval <a href='https://arxiv.org/abs/1906.05807'>(Seo et al., ACL'19)</a> was originally proposed for a real-time open-domain question answering model.
                     <div class="center">
                         <figure>
                         <img src="images/densephrases.jpeg" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px">
