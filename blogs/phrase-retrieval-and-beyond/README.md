@@ -1,6 +1,6 @@
 # Phrase Retrieval and Beyond
-August 25, 2021, Written by [Jinhyuk Lee](https://jhyuklee.github.io) <br>
-Reviewed and edited by Danqi Chen, Alexander Wettig, Zexuan Zhong, Vishvak Murahari, Jens Tuyls, and Howard Yen.
+Oct 1, 2021 | Written by [Jinhyuk Lee](https://jhyuklee.github.io) <br>
+Reviewed by [Danqi Chen](https://www.cs.princeton.edu/~danqic/), [Alexander Wettig](https://www.cs.princeton.edu/~awettig/), [Zexuan Zhong](https://www.cs.princeton.edu/~zzhong/), [Vishvak Murahari](https://vishvakmurahari.com/), [Jens Tuyls](https://jens321.github.io/), and [Howard Yen](https://howard-yen.github.io/) <br>
 
 When I started my internship at NAVER in November 2018, I got an opportunity to participate in a research project led by <a href='https://seominjoon.github.io/'>Minjoon Seo</a>.
 At that time, Minjoon and his colleagues were proposing the concept of "Phrase-Indexed Question Answering" [<a href='#reference'>1</a>], which formulates extractive question answering as retrieving pre-indexed phrases (hence later extended to <b>phrase retrieval</b>) and brings a significant scalability advantage over existing QA models.
