@@ -187,77 +187,32 @@ My time spent on phrase retrieval for the last three years was a great journey t
 Below is the summary of the improvement we made.
 All models, resources and code are also publicly available.
 <br><br>
-<p align="center">
-<table border=1 frame=void rules=rows style="border-collapse: collapse; margin: 0 auto;">
-  <tr>
-    <th style="border-right: solid 1px #000;">Model</th>
-    <th style="padding-left:10px">NQ-open Acc. </th>
-    <th style="padding-left:10px">Stroage (GB)</th>
-    <th style="padding-left:10px">#Q/sec (CPU)</th>
-    <th style="padding-left:10px">Application</th>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">Seo et al., ACL'19 [<a href='#reference'>2</a>]</td>
-    <td style="padding-left:10px">8.1*</td>
-    <td style="padding-left:10px">1,200</td>
-    <td style="padding-left:10px">2.4</td>
-    <td style="padding-left:10px">Open-domain QA</td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">Lee et al., ACL'20 [<a href='#reference'>3</a>]</td>
-    <td style="padding-left:10px">14.5* (+6.4)</td>
-    <td style="padding-left:10px">1,547 (+29%)</td>
-    <td style="padding-left:10px">1.7 (0.7x)</td>
-    <td style="padding-left:10px">Open-domain QA</td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">Lee et al., ACL'21 [<a href='#reference'>4</a>]</td>
-    <td style="padding-left:10px">40.9 (+32.8)</td>
-    <td style="padding-left:10px">320 (-73%)</td>
-    <td style="padding-left:10px">13.6 (5.7x)</td>
-    <td style="padding-left:10px">+ Slot filling</td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000; padding-right:10px">Lee et al., EMNLP'21 [<a href='#reference'>5</a>]</td>
-    <td style="padding-left:10px"><b>41.3 (+33.2)</b></td>
-    <td style="padding-left:10px"><b>74 (-94%)</b></td>
-    <td style="padding-left:10px"><b>16.7 (7.0x)</b></td>
-    <td style="padding-left:10px">+ Passage/doc. retrieval</td>
-  </tr>
-</table>
-<br>Table 4. Summary of improvement in phrase retrieval. Numbers in parentheses show absolute (Acc.) or relative (%, x) improvement compared to Seo et al., 2019. *: earlier models were only trained on SQuAD, but simply adding the NQ training data gives a marginal improvement in Lee et al., ACL'20.
-</p>
 
-<br>
-<p align="center">
-<table border=1 frame=void rules=rows style="border-collapse: collapse; margin: 0 auto;">
-  <tr>
-    <th style="border-right: solid 1px #000;">Model</th>
-    <th style="padding-left:10px">Code </th>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">PIQA [<a href='#reference'>1</a>]</td>
-    <td style="padding-left:10px"><a href="https://github.com/seominjoon/piqa">https://github.com/seominjoon/piqa</a></td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">DenSPI [<a href='#reference'>2</a>]</td>
-    <td style="padding-left:10px"><a href="https://github.com/seominjoon/denspi">https://github.com/seominjoon/denspi</a></td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">Sparc [<a href='#reference'>3</a>]</td>
-    <td style="padding-left:10px"><a href="https://github.com/jhyuklee/sparc">https://github.com/jhyuklee/sparc</a></td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000;">DensePhrases [<a href='#reference'>4</a>]</td>
-    <td style="padding-left:10px"><a href="https://github.com/princeton-nlp/DensePhrases">https://github.com/princeton-nlp/DensePhrases</a></td>
-  </tr>
-  <tr>
-    <td style="border-right: solid 1px #000; padding-right:10px">Phrase-based Passage Retrieval [<a href='#reference'>5</a>]</td>
-    <td style="padding-left:10px"><a href="https://github.com/princeton-nlp/DensePhrases">https://github.com/princeton-nlp/DensePhrases</a></td>
-  </tr>
-</table>
-<br>Table 5. Links to the code of each model<br>
-</p>
+<div align="center">
+    
+| Model | NQ-open Acc. | Stroage (GB)| #Q/sec (CPU) | Application |
+|:-------|:------------|:-----------|:------------|:-----------|
+| Seo et al., ACL'19 [<a href='#reference'>2</a>] | 8.1* | 1,200 | 2.4 | Open-domain QA |
+| Lee et al., ACL'20 [<a href='#reference'>3</a>] | 14.5* (+6.4) | 1,547 (+29%) | 1.7 (0.7x) | Open-domain QA |
+| Lee et al., ACL'21 [<a href='#reference'>4</a>] | 40.9 (+32.8) | 320 (-73%) | 13.6 (5.7x) | + Slot filling |
+| Lee et al., EMNLP'21 [<a href='#reference'>5</a>] | 41.3 (+33.2) | 74 (-94%) | 16.7 (7.0x) | + Passage/doc. retrieval |
+
+Table 4. Summary of improvement in phrase retrieval. Numbers in parentheses show absolute (Acc.) or relative (%, x) improvement compared to Seo et al., 2019. *: earlier models were only trained on SQuAD, but simply adding the NQ training data gives a marginal improvement in Lee et al., ACL'20.
+</div>
+
+<div align="center">
+
+| Model | Code |
+|:------|:-----|
+| PIQA [<a href='#reference'>1</a>] | <a href="https://github.com/seominjoon/piqa">https://github.com/seominjoon/piqa</a> |
+| DenSPI [<a href='#reference'>2</a>] | <a href="https://github.com/seominjoon/denspi">https://github.com/seominjoon/denspi</a> |
+| Sparc [<a href='#reference'>3</a>] | <a href="https://github.com/jhyuklee/sparc">https://github.com/jhyuklee/sparc</a> |
+| DensePhrases [<a href='#reference'>4</a>] | <a href="https://github.com/princeton-nlp/DensePhrases">https://github.com/princeton-nlp/DensePhrases</a> |
+| Phrase-based Passage Retrieval [<a href='#reference'>5</a>] | <a href="https://github.com/princeton-nlp/DensePhrases">https://github.com/princeton-nlp/DensePhrases</a> |
+
+Table 5. Links to the code of each model<br>
+</div>
+
 We hope to see more works starting to use phrase retrieval in their work or trying to improve phrase retrieval in the future.
 If you have any questions regarding this post or any works introduced above, I'd be happy to answer them or provide my thoughts (lee.jnhk@gmail.com)!
 
