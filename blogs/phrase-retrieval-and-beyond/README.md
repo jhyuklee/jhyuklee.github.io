@@ -1,20 +1,20 @@
 # Phrase Retrieval and Beyond
 August 25, 2021, Written by [Jinhyuk Lee](https://jhyuklee.github.io) <br>
-Reviewed and edited by the members of the Princeton NLP group including Danqi Chen, Alexander Wettig, 
+Reviewed and edited by Danqi Chen, Alexander Wettig, Zexuan Zhong, Vishvak Murahari, Jens Tuyls, and Howard Yen.
 
 When I started my internship at NAVER in November 2018, I got an opportunity to participate in a research project led by <a href='https://seominjoon.github.io/'>Minjoon Seo</a>.
 At that time, Minjoon and his colleagues were proposing the concept of "Phrase-Indexed Question Answering" [<a href='#reference'>1</a>], which formulates extractive question answering as retrieving pre-indexed phrases (hence later extended to <b>phrase retrieval</b>) and brings a significant scalability advantage over existing QA models.
 <br><br>
-Ever since I started working on this project, I've spent a lot of time developing better phrase retrieval models [<a href='#reference'>2</a>, <a href='#reference'>3</a>, <a href='#reference'>4</a>], but didn't really have a chance to introduce this line of work more casually.
+Ever since I started working on this project, I've spent a lot of time developing better phrase retrieval models [<a href='#reference'>2</a>, <a href='#reference'>3</a>, <a href='#reference'>4</a>], but didn't have a chance to talk about the story behind and the connection of recent work we did in this line of research.
 In this post, I'm going to introduce what phrase retrieval is and what progress has been made, convincing you that this is an important/interesting topic.
-Each section will cover a paper and explain its contributions.
+Each section will cover a paper and explain its contributions. All the references are listed at the end.
 <ol>
     <li><a href='#background'>Background: Cross Attention for Extractive QA</a></li>
     <li><a href='#piqa'>Phrase-Indexed Question Answering</a> [<a href='#reference'>1</a>]</li>
     <li><a href='#pret'>Phrase Retrieval for Open-Domain QA</a> [<a href='#reference'>2</a>]</li>
     <li><a href='#sparse'>Learning Sparse Phrase Representations</a> [<a href='#reference'>3</a>]</li>
     <li><a href='#dense'>Dense Phrase Retrieval and Beyond</a> [<a href='#reference'>4</a>]</li>
-    <li><a href='#beyond'>Phrase Retrieval is All You Need</a> [<a href='#reference'>5</a>]</li>
+    <li><a href='#beyond'>Phrase Retrieval Learns Passage Retrieval, Too</a> [<a href='#reference'>5</a>]</li>
     <li><a href='#conclude'>Conclusion</a></li>
 </ol>
 
@@ -27,10 +27,11 @@ One example would be feeding concatenated passage and question words into a mode
 Then the model is trained to output a probability distribution over the passage words whether they are start (or end) of the answer.
 <p align="center">
     <img src="images/squadbert.jpeg" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
-    <br>Figure 1. An example of using cross attention for reading comprehension using BERT
+    <br>Figure 1. An example of using cross attention for reading comprehension using BERT.
+    <br>Image credit: <a href="https://arxiv.org/abs/1810.04805">Devlin et al., 2019</a>
 </p>
 
-But, imagine that we are not given a particular passage but want to read every single Wikipedia passage to find an answer for a question (this is basically what <a href='https://aclanthology.org/2020.acl-tutorials.8/'><em>open-domain question answering</em></a> aims to do).
+But, imagine that we are not given a particular passage but want to read every single Wikipedia passage to find an answer for a question (this is basically what <a href='https://aclanthology.org/2020.acl-tutorials.8.pdf'><em>open-domain question answering</em></a> aims to do).
 Cross-attention models would scale terribly since we have to compute the attention score of every combination of input words at every layer.
 For instance, if we are only given a single CPU, BERT-large will process 51 words per second, and it will take about <b>681 days (!)</b> to process 21 million passages (assuming attention is computed per passage) in Wikipedia.
 Phrase retrieval is proposed to mitigate this problem and enables reading the entire Wikipedia <b>within a second</b>.
@@ -57,7 +58,7 @@ Now, for any incoming questions, we <b>don't need to re-read any passages</b> bu
 Since the inference time for computing the question vector is relatively trivial (compared to reading multiple long passages) and MIPS can be efficiently implemented with sub-linear time search algorithms, this type of model can be very useful when scaling extractive QA models.
 <br><br>
 While conceptually simple, Seo et al. (2018) [<a href='#reference'>1</a>] didn't actually evaluate their model in a large-scale setting such as using the entire Wikipedia (i.e., open-domain QA), but only reported the performance when a single gold passage is given for each question.
-In this setup, they pointed out that since we now need to process the passages <b>in a query-agnostic way</b>, meaning that our passage representations are not informed by the posed question as in cross attention models (compare Figure 1 and 2), the performance of PIQA falls behind existing extractive QA models as shown in Table 1.
+In this setup, they pointed out that since we now need to process the passages <b>in a query-agnostic way</b>, meaning that our passage representations are not informed by the posed question as in cross attention models (compare Figure 1 and 2), the performance of PIQA falls greatly behind existing extractive QA models as shown in Table 1.
 <p align="center">
     <img src="images/piqa-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
     <br>Table 1. Phrase-indexed QA models (denoted as PI) fall behind existing QA models. <br> Evaluated on SQuAD where a single gold passage is given for each question.
@@ -80,7 +81,7 @@ In addition to the complexity issue, the retriever-reader approach can suffer fr
 <br><br>
 Based on the spirit of PIQA, phrase retrieval [<a href='#reference'>2</a>] was proposed to tackle these limitations.
 Conceptually, phrase retrieval is simply an open-domain QA extension of PIQA.
-Their model called DenSPI (Dense-Sparse Phrase Index) pre-encodes <b>billions of phrase vectors from the entire Wikipedia</b> and the answer is retrieved by performing MIPS over the phrase vectors.
+Our model called DenSPI (Dense-Sparse Phrase Index) pre-encodes <b>billions of phrase vectors from the entire Wikipedia</b> and the answer is retrieved by performing MIPS over the phrase vectors.
 As shown in Table 2, its performance is competitive to the existing open-domain QA models (in retriever-reader approaches) with a much faster inference time.
 <p align="center">
     <img src="images/denspi-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="400px">
@@ -120,7 +121,7 @@ Although we decided to remove the sparse representations from our model, I still
 <a name='dense'></a>
 ## Dense Phrase Retrieval and Going Beyond
 The main goal of DensePhrases [<a href='#reference'>4</a>] was to get rid of sparse vectors from phrase retrieval.
-We didn't like the aspect of phrase retrieval models heavily relying on the sparse vectors (due to the reasons mentioned above), but their accuracy was pretty low without sparse vectors (see Table 2 where sparse scale=0) and it was very challenging to build fully dense representations of phrases <b>in a billion scale</b>.
+We didn't like the aspect of phrase retrieval models heavily relying on the sparse vectors (due to the reasons mentioned above), but their accuracy was pretty low without sparse vectors (see Table 2 where sparse scale=0) and it was very challenging to build fully dense representations of phrases <b>at a billion scale</b>.
 Of course, more powerful open-domain QA models kept coming out!
 Among them, we were particularly inspired by works on learning dense representations of passages (<a href='https://arxiv.org/abs/1906.00300'>ORQA</a> by Lee et al., ACL'19, <a href='https://arxiv.org/abs/2002.08909'>REALM</a> by Guu et al., ICML'20).
 However, due to the different scales and granularities, we had to start from scratch by examining architectural details and learning methods of phrase retrieval. And, following is the performance of DensePhrases with <b>fully dense representations of phrases</b>.
