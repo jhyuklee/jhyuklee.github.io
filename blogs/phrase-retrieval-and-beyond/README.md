@@ -187,6 +187,7 @@ My time spent on phrase retrieval for the last three years was a great journey t
 Below is the summary of the improvement we made.
 All models, resources and code are also publicly available.
 <br><br>
+<p align="center">
 <table border=1 frame=void rules=rows style="border-collapse: collapse; margin: 0 auto;">
   <tr>
     <th style="border-right: solid 1px #000;">Model</th>
@@ -224,8 +225,11 @@ All models, resources and code are also publicly available.
     <td style="padding-left:10px">+ Passage/doc. retrieval</td>
   </tr>
 </table>
-<figcaption align="center" style="padding-top:10px">Table 4. Summary of improvement in phrase retrieval. Numbers in parentheses show absolute (Acc.) or relative (%, x) improvement compared to Seo et al., 2019. *: earlier models were only trained on SQuAD, but simply adding the NQ training data gives a marginal improvement in Lee et al., ACL'20.</figcaption>
+<br>Table 4. Summary of improvement in phrase retrieval. Numbers in parentheses show absolute (Acc.) or relative (%, x) improvement compared to Seo et al., 2019. *: earlier models were only trained on SQuAD, but simply adding the NQ training data gives a marginal improvement in Lee et al., ACL'20.
+</p>
+
 <br>
+<p align="center">
 <table border=1 frame=void rules=rows style="border-collapse: collapse; margin: 0 auto;">
   <tr>
     <th style="border-right: solid 1px #000;">Model</th>
@@ -252,8 +256,8 @@ All models, resources and code are also publicly available.
     <td style="padding-left:10px"><a href="https://github.com/princeton-nlp/DensePhrases">https://github.com/princeton-nlp/DensePhrases</a></td>
   </tr>
 </table>
-<figcaption align="center" style="padding-top:10px">Table 5. Links to the code of each model</figcaption>
-<br>
+<br>Table 5. Links to the code of each model<br>
+</p>
 We hope to see more works starting to use phrase retrieval in their work or trying to improve phrase retrieval in the future.
 If you have any questions regarding this post or any works introduced above, I'd be happy to answer them or provide my thoughts (lee.jnhk@gmail.com)!
 
