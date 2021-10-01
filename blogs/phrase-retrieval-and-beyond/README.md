@@ -1,5 +1,5 @@
 # Phrase Retrieval and Beyond
-August 25, 2021, WRitten by [Jinhyuk Lee](https://jhyuklee.github.io)
+August 25, 2021, Written by [Jinhyuk Lee](https://jhyuklee.github.io)
 
 <p class="main">
 When I started my internship at NAVER in November 2018, I got an opportunity to participate in a research project led by <a href='https://seominjoon.github.io/'>Minjoon Seo</a>.
