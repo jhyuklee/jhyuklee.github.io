@@ -32,6 +32,9 @@ Then the model is trained to output a probability distribution over the passage 
     <figcaption>Figure 1. An example of using cross attention for reading comprehension using BERT </figcaption>
     </figure>
 </div>
+![img](images/squadbert.jpeg hi)
+*Figure 1. An example of using cross attention for reading comprehension using BERT*
+
 But, imagine that we are not given a particular passage but want to read the entire Wikipedia passages to find an answer for a question (this is basically what <a href='https://aclanthology.org/2020.acl-tutorials.8/'><em>open-domain question answering</em></a> aims to do).
 Cross-attention models would scale terribly since we have to compute the attention score of every combination of input words at every layer.
 For instance, if we are only given a single CPU, BERT-large will process 51 words per second, and it will take about <b>681 days (!)</b> to process 21 million passages (or 3 billion words) in Wikipedia.
