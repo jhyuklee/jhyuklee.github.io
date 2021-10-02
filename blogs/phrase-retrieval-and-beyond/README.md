@@ -62,7 +62,7 @@ In this setup, they pointed out that since we now need to process the passages <
     <img src="images/piqa-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
     <br>Table 1. Phrase-indexed QA models (denoted as PI) fall behind existing QA models. <br> Evaluated on SQuAD where a single gold passage is given for each question.
 </p>
-This observation can be understood as the gap between bi-encoder and cross-encoder models.
+This observation can be understood as the gap between dual-encoder and cross-encoder models, which is often discussed in the literature of information retrieval.
 Given the philosophy of PIQA, we are now ready to talk about <b>phrase retrieval</b>.
 
 <a name='pret'></a>
