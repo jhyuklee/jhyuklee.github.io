@@ -45,6 +45,7 @@ PIQA works by first pre-computing and indexing all the phrase vectors from passa
 <p align="center">
     <img src="images/piqa.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
     <br>Figure 2. Phrase-indexed question answering
+    <br>Image credit: <a href="https://arxiv.org/abs/1804.07726">Seo et al., 2018</a>
 </p>
 The way phrases are encoded from the passage is very straightforward.
 First, each phrase vector is represented by <b>the concatenation of start and end token vectors</b> from the passage.
@@ -74,6 +75,7 @@ Many open-domain QA models at that time were based on this approach and it is st
 <p align="center">
     <img src="images/drqa.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="650px">
     <br>Figure 3. An example of the retriever-reader approach called DrQA [<a href='#reference'>7</a>]. <br>DrQA retrieves top-5 documents from Wikipedia with Document Retriever and <br> these documents are processed by Document Reader based on Bi-LSTM.
+    <br>Image credit: <a href="https://arxiv.org/abs/1704.00051">Chen et al., 2017</a>
 </p>
 Although widely adopted in many open-domain QA models, retriever-reader approaches still need to <b>process about hundred passages for every question</b> with heavy reader models.
 For instance, a state-of-the-art reader model for open-domain QA requires 64 32GB V100 GPUs for training, which is very difficult to afford in academia [<a href='#reference'>8</a>] and is prohibitively slow to run without GPUs.
@@ -106,7 +108,9 @@ Since the sparse vector used in DenSPI was static (we used document and paragrap
 What we wanted to do is to contextualize the sparse vectors and make <b>every phrase within the passage have a different sparse vector</b>, focusing on different entities in the passage.
 <p align="center">
     <img src="images/sparc.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="400px">
-    <br>Figure 4. A motivating example of Sparc [<a href='#reference'>3</a>]. The proposed sparse vector is contextualized so that every phrase has a different sparse vector.
+    <br>Figure 4. A motivating example of Sparc [<a href='#reference'>3</a>]
+    <br>The proposed sparse vector is contextualized so that every phrase has a different sparse vector.
+    <br>Image credit: <a href="https://arxiv.org/abs/1911.02896">Lee et al., 2020</a>
 </p>
 While this <b>C</b>ontextualized <b>Spar</b>se representation (Sparc [<a href='#reference'>3</a>]) improved DenSPI by more than 4% absolute accuracy, there were clear disadvantages of this approach.
 First, concatenating another representation to each phrase was obviously not scalable.
@@ -134,7 +138,9 @@ Phrase retrieval is <b>now competitive with state-of-the-art open-domain QA mode
 It got even faster than previous phrase retrieval models as demonstrated in Figure 5 as well.
 <p align="center">
     <img src="https://github.com/princeton-nlp/DensePhrases/raw/main/densephrases/demo/static/files/preview-new.gif" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="600px">
-    <br>Figure 5. DensePhrases showing real-time results (100ms/question) for open-domain questions. <br>For every question, it shows top-k phrases (denoted in <b>boldface</b>) as well as their original passages. The demo is available at <a href='http://densephrases.korea.ac.kr'>http://densephrases.korea.ac.kr</a>.
+    <br>Figure 5. DensePhrases showing real-time results (100ms/question) for open-domain questions.
+    <br>For every question, it shows top-k phrases (denoted in <b>boldface</b>) as well as their original passages.
+    <br>The demo is available at <a href='http://densephrases.korea.ac.kr'>http://densephrases.korea.ac.kr</a>.
 </p>
 The main technical contributions of DensePhrases can be summarized as follows.
 <ul>
@@ -156,11 +162,12 @@ Since the definition of phrases used in phrase retrieval—contiguous words up t
 Based on this motivation, our recent paper [<a href='#reference'>5</a>] formulates <b>phrase-based passage retrieval</b> that defines passage retrieval scores based on phrase retrieval scores as follows:
 <p align="center">
     <img src="images/pbpr-eqn.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="350px">
-    <br>Equation 1. Equation of phrase-based passage retrieval. The score of passage retrieval is defined as the maximum phrase retrieval score within the passage <i>p</i>. <i>S(p)</i> is the set of all the phrases in <i>p</i>. The formulation can be easily modified depending on the choice of granularity (e.g., sentence).
+    <br>Equation 1. Equation of phrase-based passage retrieval. The score of passage retrieval is defined as the maximum phrase retrieval score within the passage <i>p</i>. <i>S(p)</i> is the set of all the phrases in <i>p</i>. 
+    <br>The formulation can be easily modified depending on the choice of granularity (e.g., sentence).
 </p>
 Interestingly, using the formulation above, DensePhrases without any passage-level training signal can easily outperform Dense Passage Retriever (DPR [<a href='#reference'>9</a>]) in terms of its passage retrieval accuracy (Table 6) and other information retrieval metrics (shown in the paper).
 <p align="center">
-    <img src="images/pbpr-acc.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="800px">
+    <img src="images/pbpr-acc.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="700px">
     <br>Figure 6. DensePhrases with phrase-based passage retrieval can easily outperform DPR on passage retrieval for open-domain QA. Evaluated on Natural Questions and TriviaQA.
 </p>
 To provide a unified view of text retrieval, we provide our analysis comparing DensePhrases and DPR and show why DensePhrases can naturally learn passage retrieval, too.
