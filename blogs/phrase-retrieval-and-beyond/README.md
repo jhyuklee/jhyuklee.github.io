@@ -152,7 +152,7 @@ In the paper, we show that the accuracy of DensePhrases on slot filling can easi
 ## Phrase Retrieval Learns Passage Retrieval, Too
 While we have shown that DensePhrases can be used to retrieve phrase-level knowledge from Wikipedia (or any other corpus of our choice), we were noticing that it also retrieves relevant passages.
 Since each phrase is extracted from a passage, we can always locate the phrases and their original passages as shown in Figure 5.
-Whenever we retrieve a specific unit of text, which is embdded in a larger context, we can always retrieve a larger units of text (e.g.,retrieve phrase ⇒ sentence ⇒ passage), but not vice versa (e.g., retrieve passage ⇏ sentence ⇏ phrase).
+Whenever we retrieve a specific unit of text, which is embdded in a larger context, we can always retrieve a larger units of text (e.g., retrieve phrase ⇒ sentence ⇒ passage), but not vice versa (e.g., retrieve passage ⇏ sentence ⇏ phrase).
 <br><br>
 Since the definition of phrases used in phrase retrieval—contiguous words up to length L—includes single words, this is the smallest meaningful retrieval unit that we have.
 Based on this motivation, our recent paper [<a href='#reference'>5</a>] formulates <b>phrase-based passage retrieval</b> that defines passage retrieval scores based on phrase retrieval scores as follows:
