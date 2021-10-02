@@ -68,11 +68,11 @@ Given the philosophy of PIQA, we are now ready to talk about <b>phrase retrieval
 <a name='pret'></a>
 ## Phrase Retrieval for Open-Domain QA
 Remember that open-domain QA aims to find an answer to a question from the entire Wikipedia.
-Since the cost of reading the entire Wikipedia with a cross-attention model is too high, <b>the retriever-reader approach</b> (initiated by Chen et al. (2017) [<a href='#reference'>7</a>], see Figure 3) uses a first-stage document (or passage) retriever to find top-k relevant documents, so that a heavy reader model only has to read a fewer number of documents.
+Since the cost of reading the entire Wikipedia with a cross-attention model is too high, <b>the retriever-reader approach</b> (initiated by Chen et al. (2017) [<a href='#reference'>7</a>], see Figure 3) uses a first-stage document (or passage) retriever to find top k relevant documents, so that a heavy reader model only has to read a fewer number of documents.
 Many open-domain QA models at that time were based on this approach and it is still a dominating approach (e.g., <a href='https://arxiv.org/abs/1906.00300'>ORQA</a>, <a href='https://arxiv.org/abs/2004.04906'>DPR</a>, <a href='https://arxiv.org/abs/2007.01282'>FiD</a>).
 <p align="center">
     <img src="images/drqa.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="650px">
-    <br>Figure 3. An example of the retriever-reader approach called DrQA [<a href='#reference'>7</a>]. DrQA retrieves top-5 documents from Wikipedia with Document Retriever and these documents are processed by Document Reader based on Bi-LSTM. Image credit: <a href="https://arxiv.org/abs/1704.00051">Chen et al., 2017</a>.
+    <br>Figure 3. An example of the retriever-reader approach called DrQA [<a href='#reference'>7</a>]. DrQA retrieves top 5 documents from Wikipedia with Document Retriever and these documents are processed by Document Reader based on Bi-LSTM. Image credit: <a href="https://arxiv.org/abs/1704.00051">Chen et al., 2017</a>.
 </p>
 Although widely adopted in many open-domain QA models, retriever-reader approaches still need to <b>process about hundred passages for every question</b> with heavy reader models.
 For instance, a state-of-the-art reader model for open-domain QA requires 64 32GB V100 GPUs for training, which is very difficult to afford in academia [<a href='#reference'>8</a>] and is prohibitively slow to run without GPUs.
@@ -135,7 +135,7 @@ It got even faster than previous phrase retrieval models as demonstrated in Figu
 <p align="center">
     <img src="https://github.com/princeton-nlp/DensePhrases/raw/main/densephrases/demo/static/files/preview-new.gif" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="600px">
     <br>Figure 5. DensePhrases showing real-time results (100ms/question) for open-domain questions.
-    <br>For every question, it shows top-k phrases (denoted in <b>boldface</b>) as well as their original passages.
+    <br>For every question, it shows top k phrases (denoted in <b>boldface</b>) as well as their original passages.
     <br>The demo is available at <a href='http://densephrases.korea.ac.kr'>http://densephrases.korea.ac.kr</a>.
 </p>
 The main technical contributions of DensePhrases can be summarized as follows.
