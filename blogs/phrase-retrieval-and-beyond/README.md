@@ -27,8 +27,7 @@ One example would be feeding concatenated passage and question words into a mode
 Then the model is trained to output a probability distribution over the passage words whether they are start (or end) of the answer.
 <p align="center">
     <img src="images/squadbert.jpeg" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
-    <br>Figure 1. An example of using cross attention for reading comprehension using BERT.
-    <br>Image credit: <a href="https://arxiv.org/abs/1810.04805">Devlin et al., 2019</a>
+    <br>Figure 1. An example of using cross attention for reading comprehension using BERT. Image credit: <a href="https://arxiv.org/abs/1810.04805">Devlin et al., 2019</a>.
 </p>
 
 But, imagine that we are not given a particular passage but want to read every single Wikipedia passage to find an answer for a question (this is basically what <a href='https://aclanthology.org/2020.acl-tutorials.8.pdf'><em>open-domain question answering</em></a> aims to do).
@@ -44,8 +43,7 @@ Here the definition of a phrase is any contiguous text segment including a singl
 PIQA works by first pre-computing and indexing all the phrase vectors from passages and <b>finding an answer by performing maximum inner product search</b> (MIPS), which means simply finding a phrase vector that has the maximum inner product score with a question vector.
 <p align="center">
     <img src="images/piqa.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
-    <br>Figure 2. Phrase-indexed question answering
-    <br>Image credit: <a href="https://arxiv.org/abs/1804.07726">Seo et al., 2018</a>
+    <br>Figure 2. Phrase-indexed question answering. Image credit: <a href="https://arxiv.org/abs/1804.07726">Seo et al., 2018</a>.
 </p>
 The way phrases are encoded from the passage is very straightforward.
 First, each phrase vector is represented by <b>the concatenation of start and end token vectors</b> from the passage.
@@ -74,8 +72,7 @@ Since the cost of reading the entire Wikipedia with a cross-attention model is t
 Many open-domain QA models at that time were based on this approach and it is still a dominating approach (e.g., <a href='https://arxiv.org/abs/1906.00300'>ORQA</a>, <a href='https://arxiv.org/abs/2004.04906'>DPR</a>, <a href='https://arxiv.org/abs/2007.01282'>FiD</a>).
 <p align="center">
     <img src="images/drqa.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="650px">
-    <br>Figure 3. An example of the retriever-reader approach called DrQA [<a href='#reference'>7</a>]. <br>DrQA retrieves top-5 documents from Wikipedia with Document Retriever and <br> these documents are processed by Document Reader based on Bi-LSTM.
-    <br>Image credit: <a href="https://arxiv.org/abs/1704.00051">Chen et al., 2017</a>
+    <br>Figure 3. An example of the retriever-reader approach called DrQA [<a href='#reference'>7</a>]. DrQA retrieves top-5 documents from Wikipedia with Document Retriever and these documents are processed by Document Reader based on Bi-LSTM. Image credit: <a href="https://arxiv.org/abs/1704.00051">Chen et al., 2017</a>.
 </p>
 Although widely adopted in many open-domain QA models, retriever-reader approaches still need to <b>process about hundred passages for every question</b> with heavy reader models.
 For instance, a state-of-the-art reader model for open-domain QA requires 64 32GB V100 GPUs for training, which is very difficult to afford in academia [<a href='#reference'>8</a>] and is prohibitively slow to run without GPUs.
@@ -87,7 +84,7 @@ Our model called DenSPI (Dense-Sparse Phrase Index) pre-encodes <b>billions of p
 As shown in Table 2, its performance is competitive to the existing open-domain QA models (in retriever-reader approaches) with a much faster inference time.
 <p align="center">
     <img src="images/denspi-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="400px">
-    <br>Table 2. DenSPI-Hybrid performs on par with existing open-domain QA models (F1 = 44.4) <br> while running very fast during inference (0.81 s/Q = sec/question). <br>Evaluated on SQuAD-open and inference time measured purely with a CPU.
+    <br>Table 2. DenSPI-Hybrid performs on par with existing open-domain QA models (F1 = 44.4) while running very fast during inference (0.81 s/Q = sec/question). Evaluated on SQuAD-open and inference time measured purely with a CPU.
 </p>
 While it looks simple, implementing phrase retrieval required contributions from both the research and engineering sides.
 The main challenges were 1) how we can perform <b>accurate retrieval over 60 billion phrases</b> (assuming 3 billion words in Wikipedia, maximum of 20 words for each phrase) and 2) how we can <b>store 60 billion phrase vectors efficiently </b>(naive implementation will require <b>240TB</b> to store all the phrase vectors).
@@ -108,8 +105,7 @@ Since the sparse vector used in DenSPI was static (we used document and paragrap
 What we wanted to do is to contextualize the sparse vectors and make <b>every phrase within the passage have a different sparse vector</b>, focusing on different entities in the passage.
 <p align="center">
     <img src="images/sparc.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="400px">
-    <br>Figure 4. A motivating example of Sparc [<a href='#reference'>3</a>]. Image credit: <a href="https://arxiv.org/abs/1911.02896">Lee et al., 2020</a>.
-    <br>The proposed sparse vector is contextualized so that every phrase has a different sparse vector.
+    <br>Figure 4. A motivating example of Sparc [<a href='#reference'>3</a>]. The proposed sparse vector is contextualized <br>so that every phrase has a different sparse vector. Image credit: <a href="https://arxiv.org/abs/1911.02896">Lee et al., 2020</a>.
     
 </p>
 While this <b>C</b>ontextualized <b>Spar</b>se representation (Sparc [<a href='#reference'>3</a>]) improved DenSPI by more than 4% absolute accuracy, there were clear disadvantages of this approach.
@@ -131,7 +127,7 @@ Among them, we were particularly inspired by works on learning dense representat
 However, due to the different scales and granularities, we had to start from scratch by examining architectural details and learning methods of phrase retrieval. And, following is the performance of DensePhrases with <b>fully dense representations of phrases</b>.
 <p align="center">
     <img src="images/densephrases-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="700px">
-    <br>Table 3. Comparison of different open-domain QA models including DensePhrases. <br> #Q/sec: the number of questions processed per second. <br>NQ denotes <a href='https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00276/43518/Natural-Questions-A-Benchmark-for-Question'>Natural Questions</a> (Kwiatkowski et al., TACL'19).
+    <br>Table 3. Comparison of different open-domain QA models including DensePhrases. #Q/sec: the number of questions processed per second. NQ denotes <a href='https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00276/43518/Natural-Questions-A-Benchmark-for-Question'>Natural Questions</a> (Kwiatkowski et al., TACL'19).
 </p>
 To learn fully dense representations of phrases, we changed everything from pre-trained LMs (e.g., using <a href='https://arxiv.org/abs/1907.10529'>SpanBERT</a> by Joshi et al., TACL'20) to learning methods (e.g., in-batch negatives and query-side fine-tuning).
 Phrase retrieval is <b>now competitive with state-of-the-art open-domain QA models</b> such as <a href='https://arxiv.org/abs/2004.04906'>DPR</a> (Karpukhin et al., EMNLP'20) but also <b>more scalable</b> since it requires only 320GB (huge reduction from 1.5TB).
