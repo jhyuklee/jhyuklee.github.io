@@ -53,7 +53,7 @@ Among many other phrases in the passage, the model is trained to maximize the sc
 Note that we also encode questions independently and use QA datasets like <a href='https://arxiv.org/abs/1606.05250'>SQuAD</a> to train the model.
 Also, each passage token is supervised by the answer annotation in QA datasets so that <b>we can filter out tokens that are not likely to form a valid phrase</b>.
 Later on, this filtering strategy largely reduces the size of a phrase index (a collection of phrase vectors).
-<br><br
+<br><br>
 Once the passages are processed by a phrase encoder (denoted as Document encoder in Figure 2) to pre-compute phrase vectors, all we need to do during the inference is 1) to compute the question vector from a question encoder and 2) find an answer with MIPS.
 Now, for any incoming questions, we <b>don't need to re-read any passages</b> but just re-use the pre-indexed phrase vectors to find an answer.
 Since the inference time for computing the question vector is relatively trivial (compared to reading multiple long passages) and MIPS can be efficiently implemented with sub-linear time search algorithms, this type of model can be very useful when scaling extractive QA models.
