@@ -108,9 +108,9 @@ Since the sparse vector used in DenSPI was static (we used document and paragrap
 What we wanted to do is to contextualize the sparse vectors and make <b>every phrase within the passage have a different sparse vector</b>, focusing on different entities in the passage.
 <p align="center">
     <img src="images/sparc.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="400px">
-    <br>Figure 4. A motivating example of Sparc [<a href='#reference'>3</a>]
+    <br>Figure 4. A motivating example of Sparc [<a href='#reference'>3</a>]. Image credit: <a href="https://arxiv.org/abs/1911.02896">Lee et al., 2020</a>.
     <br>The proposed sparse vector is contextualized so that every phrase has a different sparse vector.
-    <br>Image credit: <a href="https://arxiv.org/abs/1911.02896">Lee et al., 2020</a>
+    
 </p>
 While this <b>C</b>ontextualized <b>Spar</b>se representation (Sparc [<a href='#reference'>3</a>]) improved DenSPI by more than 4% absolute accuracy, there were clear disadvantages of this approach.
 First, concatenating another representation to each phrase was obviously not scalable.
