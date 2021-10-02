@@ -171,7 +171,7 @@ Interestingly, using the formulation above, DensePhrases without any passage-lev
     <br>Figure 6. DensePhrases with phrase-based passage retrieval can easily outperform DPR on passage retrieval for open-domain QA. Evaluated on Natural Questions and TriviaQA.
 </p>
 To provide a unified view of text retrieval, we provide our analysis comparing DensePhrases and DPR and show why DensePhrases can naturally learn passage retrieval, too.
-Since DensePhrases differentiates positive and negative phrases <b>in the same passage</b> (we call this type of negatives as in-passage negatives), it has a very similar role as <b>BM25 hard negatives in DPR<b>, which helps it finding a passage that contain the exact answer.
+Since DensePhrases differentiates positive and negative phrases <b>in the same passage</b> (we call this type of negatives as in-passage negatives), it has a very similar role as <b>BM25 hard negatives in DPR</b>, which helps it finding a passage that contain the exact answer.
 <p align="center">
     <img src="images/pbpr-analysis.gif" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="700px">
     <br>Figure 7. While DensePhrases and DPR both use in-batch negatives, DensePhrases uses in-passage negatives (contrasting positive and negative phrases in the same passage) which helps it finding correct passages.
