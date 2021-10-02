@@ -127,7 +127,7 @@ Although we decided to remove the sparse representations from our model, I still
 The main goal of DensePhrases [<a href='#reference'>4</a>] was to get rid of sparse vectors from phrase retrieval.
 We didn't like the aspect of phrase retrieval models heavily relying on the sparse vectors (due to the reasons mentioned above), but their accuracy was pretty low without sparse vectors (see Table 2 where sparse scale=0) and it was very challenging to build fully dense representations of phrases <b>at a billion scale</b>.
 Of course, more powerful open-domain QA models kept coming out!
-Among them, we were particularly inspired by works on learning dense representations of passages (<a href='https://arxiv.org/abs/1906.00300'>ORQA</a> by Lee et al., ACL'19, <a href='https://arxiv.org/abs/2002.08909'>REALM</a> by Guu et al., ICML'20).
+Among them, we were particularly inspired by works on learning dense representations of passages (<a href='https://arxiv.org/abs/1906.00300'>ORQA</a> by Lee et al., ACL'19, <a href='https://arxiv.org/abs/2004.04906'>DPR</a> by Karpukhin et al., EMNLP'20).
 However, due to the different scales and granularities, we had to start from scratch by examining architectural details and learning methods of phrase retrieval. And, following is the performance of DensePhrases with <b>fully dense representations of phrases</b>.
 <p align="center">
     <img src="images/densephrases-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="700px">
