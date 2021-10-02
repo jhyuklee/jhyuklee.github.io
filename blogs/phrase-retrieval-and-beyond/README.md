@@ -58,7 +58,7 @@ Once the passages are processed by a phrase encoder (denoted as Document encoder
 Now, for any incoming questions, we <b>don't need to re-read any passages</b> but just re-use the pre-indexed phrase vectors to find an answer.
 Since the inference time for computing the question vector is relatively trivial (compared to reading multiple long passages) and MIPS can be efficiently implemented with sub-linear time search algorithms, this type of model can be very useful when scaling extractive QA models.
 <br><br>
-While conceptually simple, Seo et al. (2018) [<a href='#reference'>1</a>] didn't actually evaluate their model in a large-scale setting such as using the entire Wikipedia (i.e., open-domain QA), but only reported the performance when a single gold passage is given for each question.
+While conceptually simple, Seo et al. (2018) [<a href='#reference'>1</a>] didn't actually evaluate their model in a large-scale setting such as using the entire Wikipedia (i.e., open-domain QA), but only evaluated it on the reading comprehension setting where a single gold passage is given for each question.
 In this setup, they pointed out that since we now need to process the passages <b>in a query-agnostic way</b>, meaning that our passage representations are not informed by the posed question as in cross attention models (compare Figure 1 and 2), the performance of PIQA falls greatly behind existing extractive QA models as shown in Table 1.
 <p align="center">
     <img src="images/piqa-table.png" alt="" class="figure-img img-fluid" alt="Responsive image" style="margin:20px" width="500px">
