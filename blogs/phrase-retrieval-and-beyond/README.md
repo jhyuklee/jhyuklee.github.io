@@ -32,7 +32,7 @@ Then the model is trained to output a probability distribution over the passage 
 
 But, imagine that we are not given a particular passage but want to read every single Wikipedia passage to find an answer for a question (this is basically what <a href='https://aclanthology.org/2020.acl-tutorials.8.pdf'><em>open-domain question answering</em></a> aims to do).
 Cross-attention models would scale terribly since we have to compute the attention score of every combination of input words at every layer.
-For instance, if we are only given a single CPU, BERT-large will process 51 words per second, and it will take about <b>681 days (!)</b> to process 21 million passages (assuming attention is computed per passage) in Wikipedia.
+For instance, if we are only given a single CPU, BERT-large will process 51 words per second, and it will take about <b>681 days (!)</b> to process 21 million passages (assuming the attention is computed per passage) in Wikipedia.
 Phrase retrieval is proposed to mitigate this problem and enables reading the entire Wikipedia <b>within a second</b>.
 Before introducing what phrase retrieval is, we first need to understand what phrase-indexed question answering is.
 
