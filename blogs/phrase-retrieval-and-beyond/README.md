@@ -144,7 +144,7 @@ It got even faster than previous phrase retrieval models as demonstrated in Figu
 </p>
 The main technical contributions of DensePhrases can be summarized as follows.
 <ul>
-<li> <b>In-batch / pre-batch negatives</b>: motivated by the literature on contrastive learning, we applied in-batch negatives, which has also been shown to be effective for dense passage representations [<a href='#reference'>9</a>]. We also introduced pre-batch negatives where representations from recent mini-batches are cached and used as negative samples.</li>
+<li> <b>In-batch / pre-batch negatives</b>: motivated by the literature on contrastive learning, we applied in-batch negatives, which has also been shown to be effective for dense passage representations [<a href='#reference'>9</a>]. We also proposed a novel variant of negatives called pre-batch negatives where representations from recent mini-batches are cached and used as negative samples.</li>
 <li> <b>Question generation for query-agnostic phrase representations</b>: we found that generating questions for every entity in training passages improves the quality of phrase representations where we used a question generation model based on T5. This idea has been further pursued by <a href='https://arxiv.org/abs/2106.08190'>recent work</a>, which scales up the experiment and shows a large improvement on phrase-indexed QA.</li>
 <li> <b>Query-side fine-tuning</b>: due to a large number of phrase representations, we fix them once they are obtained and further optimize the question encoder. This is shown to be effective for in-domain datasets as well as transfer learning.</li>
 </ul>
