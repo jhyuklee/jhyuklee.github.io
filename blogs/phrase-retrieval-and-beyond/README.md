@@ -81,7 +81,7 @@ Although widely adopted in many open-domain QA models, retriever-reader approach
 For instance, a state-of-the-art reader model for open-domain QA requires 64 32GB V100 GPUs for training, which is very difficult to afford in academia [<a href='#reference'>8</a>] and is prohibitively slow to run without GPUs.
 In addition to the complexity issue, the retriever-reader approach can suffer from <b>error propagation</b> since the reader model will never be able to find the answer if the document retriever fails to retrieve documents that contain the answers.
 <br><br>
-Based on the spirit of PIQA, phrase retrieval [<a href='#reference'>2</a>] was proposed to tackle these limitations.
+Based on the spirit of PIQA, we proposed phrase retrieval [<a href='#reference'>2</a>] to tackle these limitations.
 Conceptually, phrase retrieval is simply an open-domain QA extension of PIQA.
 Our model called DenSPI (Dense-Sparse Phrase Index) pre-encodes <b>billions of phrase vectors from the entire Wikipedia</b> and the answer is retrieved by performing MIPS over the phrase vectors.
 As shown in Table 2, its performance is competitive to the existing open-domain QA models (in retriever-reader approaches) with a much faster inference time.
