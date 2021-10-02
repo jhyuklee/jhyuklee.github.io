@@ -5,7 +5,7 @@ Reviewed by [Danqi Chen](https://www.cs.princeton.edu/~danqic/), [Alexander Wett
 When I started my internship at NAVER in November 2018, I got an opportunity to participate in a research project led by <a href='https://seominjoon.github.io/'>Minjoon Seo</a>.
 At that time, Minjoon and his colleagues were proposing the concept of "Phrase-Indexed Question Answering" [<a href='#reference'>1</a>], which formulates extractive question answering as retrieving pre-indexed phrases (hence later extended to <b>phrase retrieval</b>) and brings a significant scalability advantage over existing QA models.
 <br><br>
-Ever since I started working on this project, I've spent a lot of time developing better phrase retrieval models [<a href='#reference'>2</a>, <a href='#reference'>3</a>, <a href='#reference'>4</a>], but didn't have a chance to talk about the story behind and the connection of recent work we did in this line of research.
+Ever since I started working on this project, I've spent a lot of time developing better phrase retrieval models [<a href='#reference'>2</a>, <a href='#reference'>3</a>, <a href='#reference'>4</a>], but didn't have a chance to talk about the story behind the scene and the connection of recent work we did in this line of research.
 In this post, I'm going to introduce what phrase retrieval is and what progress has been made, convincing you that this is an important/interesting topic.
 Each section will cover a paper and explain its contributions. All the references are listed at the end.
 <ol>
