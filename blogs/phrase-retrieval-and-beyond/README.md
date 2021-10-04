@@ -91,7 +91,7 @@ The main challenges were 1) how we can perform <b>accurate retrieval over 60 bil
 In [<a href='#reference'>2</a>], we were able to achieve a decent accuracy by combining trained dense vectors and static sparse vectors such as TF-IDF (this is the reason why it is called Dense-Sparse Phrase Index). We also reduced the storage from 240TB to 1.2TB with various engineering efforts including the use of pointer, filtering, and quantization.
 <br><br>
 Another nice thing about phrase retrieval is that we no longer have to train two separate models—a retriever and a reader—for open-domain QA but <b>only need to focus on the phrase retriever</b> that directly outputs the answers since it doesn't require a reader model.
-Indeed, there are many recent works that study the complex interplay between the retriever and the reader (e.g., <a href='https://arxiv.org/abs/2012.04584'>Izacard and Grave, ICLR'21</a>, <a href='https://arxiv.org/abs/2010.10999'>Yang and Seo, 2020</a>), but improving the retriever doesn't really guarantee better open-domain QA accuracy since we need to train another reader model that finds the answer.
+Indeed, there are many recent works that study the complex interplay between the retriever and the reader (e.g., <a href='https://arxiv.org/abs/2012.04584'>Izacard and Grave, ICLR'21</a>, <a href='https://arxiv.org/abs/2010.10999'>Yang and Seo, 2020</a>), but improving the retriever doesn't guarantee better open-domain QA accuracy since we need to train another reader model given the new passage distribution.
 Since phrase retrieval is not a pipeline model, it doesn't have such a problem and improvement in the phrase retriever will always translate to better open-domain QA accuracy.
 
 <a name='sparse'></a>
