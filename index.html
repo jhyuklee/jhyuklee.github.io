@@ -1,29 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinhyuk Lee</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons: Font Awesome for social media & Academicons for Google Scholar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Gabarito" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css" />
-    <title>Jinhyuk Lee</title>
-  </head>
-  <body>
-    <div class="my-container my-centered">
-      <div class="my-card">
-        <h1 class="my-name">Jinhyuk Lee</h1>
-        <p class="my-blurb">Research Scientist<br>Google DeepMind</p>
-        <p class="my-blurb">Projects: <a href="https://arxiv.org/abs/2403.20327">Gecko</a>, <a href="https://arxiv.org/abs/2312.11805">Gemini</a>, <a href="https://arxiv.org/abs/2406.13121">LOFT</a>, <a href="https://arxiv.org/abs/2304.01982">XTR</a>, <a href="https://arxiv.org/abs/1901.08746">BioBERT</a>, <a href="https://arxiv.org/abs/2012.12624">DensePhrases</a></p>
-        <p class="my-blurb">lee.jnhk at gmail.com</p>
-        <div class="portal">
-          <a href="https://scholar.google.com/citations?user=YWm_zVcAAAAJ"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
-          <a href="https://www.linkedin.com/in/jinhyuk-lee-73b27489"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-          <a href="https://twitter.com/leejnhk"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          <a href="https://github.com/jhyuklee"><i class="fa fa-github" aria-hidden="true"></i></a>
+    <!-- Google Fonts: Using Inter for a clean, professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Set the default font for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* A small custom style to make the academicons icon size more consistent with font-awesome */
+        .ai {
+           font-size: 1.15em;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Main container using flexbox to center the content vertically and horizontally -->
+    <main class="flex items-center justify-center min-h-screen">
+        <div class="text-left p-6 max-w-lg">
+            
+            <!-- Name -->
+            <h1 class="text-2xl md:text-3xl font-medium text-gray-900">
+                Jinhyuk Lee
+            </h1>
+
+            <!-- Title and Affiliation -->
+            <p class="mt-2 text-sm md:text-base text-gray-600">
+                Research Scientist, Google DeepMind
+            </p>
+
+            <!-- Email -->
+            <p class="mt-2 text-sm md:text-base">
+                <a href="mailto:lee.jnhk@gmail.com" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-300">
+                    lee.jnhk at gmail.com
+                </a>
+            </p>
+
+            <!-- Social Media & Professional Links -->
+            <div class="mt-4 flex justify-start items-center space-x-5">
+                <a href="https://scholar.google.com/citations?user=YWm_zVcAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" class="text-gray-500 hover:text-gray-900 transition-colors duration-300">
+                    <i class="ai ai-google-scholar text-xl" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jinhyuk-lee-73b27489" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-900 transition-colors duration-300">
+                    <i class="fa fa-linkedin text-xl" aria-hidden="true"></i>
+                </a>
+                <a href="https://twitter.com/leejnhk" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-gray-500 hover:text-gray-900 transition-colors duration-300">
+                    <i class="fa fa-twitter text-xl" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/jhyuklee" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-500 hover:text-gray-900 transition-colors duration-300">
+                    <i class="fa fa-github text-xl" aria-hidden="true"></i>
+                </a>
+            </div>
+
         </div>
-      </div>
-    </div>
-  </body>
+    </main>
+
+</body>
 </html>
